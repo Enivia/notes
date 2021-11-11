@@ -60,7 +60,7 @@ html {
   font-size: 58%;
 }
 body {
-  font-family: 'Open Sans', 'PingFang SC', -apple-system, BlinkMacSystemFont, opensans, Optima, 'Microsoft Yahei', sans-serif;
+  font-family: "Open Sans", "PingFang SC", -apple-system, BlinkMacSystemFont, opensans, Optima, "Microsoft Yahei", sans-serif;
   font-size: 16px;
   letter-spacing: 1.0382px;
 }
@@ -606,7 +606,7 @@ hr {
 .gt-post-content pre > code {
   letter-spacing: 0px;
   font-size: 14px;
-  font-family: 'Roboto Mono', Consolas, Menlo, Monaco, 'Source Code Pro', 'Courier New', monospace;
+  font-family: "Roboto Mono", Consolas, Menlo, Monaco, "Source Code Pro", "Courier New", monospace;
   padding: 1em;
   border-radius: 5px;
   line-height: 1.375;
@@ -620,7 +620,7 @@ hr {
 .gt-post-content table code {
   letter-spacing: 0px;
   color: var(--content-first);
-  font-family: 'Roboto Mono', Consolas, Menlo, Monaco, 'Source Code Pro', 'Courier New', monospace;
+  font-family: "Roboto Mono", Consolas, Menlo, Monaco, "Source Code Pro", "Courier New", monospace;
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
@@ -778,7 +778,7 @@ hr {
   list-style: none;
 }
 #dsqjs {
-  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, opensans, Optima, 'Microsoft Yahei', sans-serif;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, opensans, Optima, "Microsoft Yahei", sans-serif;
 }
 .hljs {
   display: block;
