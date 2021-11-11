@@ -2,18 +2,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - uses: borales/actions-yarn@v2.3.0
+      - name: yarn install
+        uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v2.3.0
+          cmd: install
+
+      - name: yarn build
+        uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: build # will run `yarn build` command
+          cmd: build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
