@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title -->
+<title>
+  type vs. interface - Enivia
+</title>
+
+<!-- Icon -->
+<link rel="icon" href="/blog/assets/logo.svg">
+
+<!-- Fonts -->
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  as="style" onload="this.onload=null, this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+</noscript>
+
+
+
+<!-- Style -->
+
+<link rel="stylesheet" href="/blog/styles/main.css">
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-pure@1.0.1/dist/main.css"> -->
+
+
+
+
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="main gt-bg-theme-color-first">
+    <div class="main-content">
+      <nav class="navbar navbar-expand-lg">
+  <div class="navbar-brand">
+    <img class="user-avatar" src="/blog/assets/avatar.png" alt="头像">
+    <div class="site-name gt-c-content-color-first">
+      Enivia
+    </div>
+  </div>
+  <button aria-label="Navbar Toggler" class="navbar-toggler" type="button" id="changeNavbar">
+    <i class="gt-c-content-color-first" style="font-size: 18px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18px" fill="currentColor">
+        <path
+          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+      </svg>
+    </i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto" style="text-align: center; ">
+      
+        <div class="nav-item">
+          <a href="/blog/" class="menu gt-a-link" target="_self">首页</a>
+        </div>
+      
+        <div class="nav-item">
+          <a href="/blog/archives/" class="menu gt-a-link" target="_self">归档</a>
+        </div>
+      
+        <div class="nav-item">
+          <a href="/blog/tags/" class="menu gt-a-link" target="_self">标签</a>
+        </div>
+      
+    </div>
+  </div>
+</nav>
+
+<script>
+  /* 移动端导航栏展开/收起切换 */
+  document.getElementById('changeNavbar').onclick = function () {
+    let element = document.getElementById('navbarSupportedContent');
+    if (element.style.display === 'none' || element.style.display === '') {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  }
+</script>
+      <div class="post-container">
+  <div class="post-detail gt-bg-theme-color-second gt-c-content-color-first">
+    <article class="gt-post-content">
+      <h1 class="post-title">
+        type vs. interface
+      </h1>
+      <div class="post-info">
+        <time class="post-time gt-c-content-color-first">· 2021-05-26 ·</time>
+        
+          
+            <a href="/blog/tags/Typescript/" class="post-tag">#Typescript</a>
+          
+        
+      </div>
+      <hr>
+      <div class="post-content gt-c-content-color-first">
+          <h1 id="type-vs-interface"><a href="#type-vs-interface" class="headerlink" title="type vs. interface"></a>type vs. interface</h1><p>使用 <code>typescript</code> 时相信不少人和我一样，时常会对 <code>interface</code> 与 <code>type</code> 这两个关键字感到疑惑，关于两者的异同官方并没有系统的说明，所以下面是参考官网及 Stackoverflow 相关问答的补充整理：</p>
+<h2 id="语法比较"><a href="#语法比较" class="headerlink" title="语法比较"></a>语法比较</h2><p>定义一个类型：</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> User &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>  age: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">type</span> User = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>  age: <span class="hljs-built_in">number</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>定义一个方法：</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> SetName &#123;<br>  (name: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">type</span> SetName = <span class="hljs-function">(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="可定义类型差异"><a href="#可定义类型差异" class="headerlink" title="可定义类型差异"></a>可定义类型差异</h2><p><code>interface</code> 只能表示对象类型，<code>type</code> 可声明所有类型,包括基本基本数据类型(undefined, null, boolean, string, number)、联合和交集类型，所以 <code>type</code> 更加灵活。</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 基本数据类型</span><br><span class="hljs-keyword">type</span> MyString = <span class="hljs-built_in">string</span>;<br><br><span class="hljs-comment">// 对象</span><br><span class="hljs-keyword">type</span> ObjectOne = &#123; <span class="hljs-attr">a</span>: <span class="hljs-built_in">string</span> &#125;;<br><span class="hljs-keyword">type</span> ObjectTwo = &#123; <span class="hljs-attr">b</span>: <span class="hljs-built_in">string</span> &#125;;<br><br><span class="hljs-comment">// 联合</span><br><span class="hljs-keyword">type</span> AllObject = ObjectOne | ObjectTwo;<br><br><span class="hljs-comment">// 交集</span><br><span class="hljs-keyword">type</span> SameObeject = ObjectOne &amp; ObejctTwo;<br><br><span class="hljs-comment">// tuple</span><br><span class="hljs-keyword">type</span> Data = [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>];<br></code></pre></td></tr></table></figure>
+
+<h2 id="扩展方式"><a href="#扩展方式" class="headerlink" title="扩展方式"></a>扩展方式</h2><p>两者都可以扩展，且两者的扩展并不互斥，<code>interface</code> 可以扩展 <code>type</code>，反之亦然。</p>
+<p><code>interface</code> extends <code>interface</code></p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> PartialPointX &#123;<br>  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Point <span class="hljs-keyword">extends</span> PartialPointX &#123;<br>  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>type</code> extends <code>type</code></p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> PartialPointX = &#123; <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span> &#125;;<br><span class="hljs-keyword">type</span> Point = PartialPointX &amp; &#123; <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span> &#125;;<br></code></pre></td></tr></table></figure>
+
+<p><code>interface</code> extends <code>type</code></p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> PartialPointX = &#123; <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span> &#125;;<br><span class="hljs-keyword">interface</span> Point <span class="hljs-keyword">extends</span> PartialPointX &#123;<br>  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>type</code> extends <code>interface</code></p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> PartialPointX &#123;<br>  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">type</span> Point = PartialPointX &amp; &#123; <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span> &#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用差异"><a href="#使用差异" class="headerlink" title="使用差异"></a>使用差异</h2><h3 id="声明合并"><a href="#声明合并" class="headerlink" title="声明合并"></a>声明合并</h3><p>使用 <code>interface</code> 重复定义名称相同的类型会被合并。</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> User &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> User &#123;<br>  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">const</span> user: User = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Enivia&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">1</span> &#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>联合类型不能作为 <code>interface</code> 的索引。</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">type</span> Keys = <span class="hljs-string">&quot;a&quot;</span> | <span class="hljs-string">&quot;b&quot;</span>;<br><br><span class="hljs-keyword">type</span> ObjectType = &#123;<br>  [key <span class="hljs-keyword">in</span> Keys]: <span class="hljs-built_in">string</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在大多数场景下这两者都可以相互替换。从语法和含义上来看，两者都能满足的场景下没有哪一个选择更优或更劣。</p>
+<p>从规范性上考虑，项目可以统一使用 <code>interface</code> / <code>type</code> 提升代码观感。其它情况，其实官方 Handbook 已经给出了回答：</p>
+<blockquote>
+<p>Type aliases and interfaces are very similar, and in many cases you can choose between them freely.</p>
+</blockquote>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://microsoft.github.io/TypeScript-New-Handbook/everything/#interface-vs-alias">Typescript Handbook</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/52682220/7923765">Stackoverflow interfaces-vs-types-in-typescript</a></li>
+</ul>
+
+      </div>
+    </article>
+  </div>
+  <br>
+  
+  
+  
+</div>
+      <div class="site-footer gt-c-content-color-first">
+  <div class="footer-main">
+    <!-- 建议保留版权信息或者添加主题信息到友链，感谢您的理解 -->
+    <!-- 文件位置：layout/_includes/footer.ejs -->
+    <span style="text-align: right; float: right;">Theme <a href="https://github.com/renbaoshuo/hexo-theme-pure"
+        target="_blank">Pure</a> | Powered by <a href="https://hexo.io" target="_blank">Hexo</a></span>
+    <span style="text-align: left;">
+      Copyright © 2021 Enivia's Blog
+
+    </span>
+  </div>
+</div>
+    </div>
+  </div>
+</body>
+
+</html>
